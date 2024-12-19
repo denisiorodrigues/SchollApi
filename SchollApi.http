@@ -1,0 +1,6 @@
+@SchollApi_HostAddress = http://localhost:5259
+
+GET {{SchollApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
