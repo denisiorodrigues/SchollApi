@@ -14,6 +14,9 @@ builder.Services.AddDbContext<AppDbContext>(options => {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+//Register services
+builder.Services.AddScoped<IStudenService, StudentService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
