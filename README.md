@@ -5,6 +5,7 @@
 
 ### Para o back-end:
 * .NET 9
+* devContainer
 * JWT
 * Entity Framework Core
 * Scalar
@@ -20,6 +21,15 @@
 * NodeJs
 
 ## Ajuda
+
+### .NET
+
+Comando para configurar os certificados digital para funcionar o HTTPS
+
+```bash
+dotnet dev-certs https
+```
+
 ### docker
 Executar o bash no container desejado
 ```bash
@@ -38,7 +48,7 @@ psql -h localhost -p 5432 -U user -d mydatabase
 
 Acesse o PostgreSQL no mesmo _host_:
 ```bash
-psql -U user -d mydatabase
+psql -U postgres -d schoolapi
 ````
 
 Liste todas as tabelas: No prompt do psql, execute:

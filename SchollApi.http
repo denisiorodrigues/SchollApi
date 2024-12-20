@@ -1,6 +1,47 @@
-@SchollApi_HostAddress = http://localhost:5259
+@SchollApi_HostAddress = http://localhost:5259/api
 
-GET {{SchollApi_HostAddress}}/weatherforecast/
+###
+# Student Endpoints
+
+## Get all students
+GET {{SchollApi_HostAddress}}/student/
 Accept: application/json
 
 ###
+## Get student by name
+GET {{SchollApi_HostAddress}}/student/student-by-name?name=ma
+Accept: application/json
+
+###
+## Get student by id
+GET {{SchollApi_HostAddress}}/student/1
+Accept: application/json
+
+###
+## Create student
+POST {{SchollApi_HostAddress}}/student/
+Content-Type: application/json
+
+{
+    "Id": 0, 
+    "name": "John Doe 3",
+    "email": "jhon@email.com", 
+    "age": 45
+}
+
+### 
+## Update student
+PUT {{SchollApi_HostAddress}}/student/4
+Content-Type: application/json
+
+{
+    "Id": 4, 
+    "name": "John Doe 4",
+    "email": "jhon4@email.com",
+    "age": 18
+}
+
+###
+## Delete student
+DELETE {{SchollApi_HostAddress}}/student/7
+Accept: application/json

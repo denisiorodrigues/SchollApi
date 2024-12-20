@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace SchollApi;
@@ -20,7 +21,7 @@ public class StudentService : IStudenService
                 .ToListAsync();
     }
 
-    public async Task<IEnumerable<Student>> GetStudenByName(string name)
+    public async Task<IEnumerable<Student>> GetStudentByName(string name)
     {
         if(string.IsNullOrEmpty(name))
         {
@@ -30,7 +31,7 @@ public class StudentService : IStudenService
         {
             return await _context
                         .Students
-                        .Where(x => x.Name.Contains(name))
+                        .Where(x => x.Name.ToLower().Contains(name.ToLower()))
                         .ToListAsync();
         }
     }
