@@ -18,6 +18,7 @@ public class StudentService : IStudenService
         return await _context
                 .Students
                 .AsNoTracking()
+                .OrderBy(x => x.Id)
                 .ToListAsync();
     }
 
