@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SchollApi;
@@ -7,6 +9,7 @@ namespace MyApp.Namespace
     [Route("api/[controller]")]
     [ApiController]
     [Produces("application/json")] // Essa configuração já vem por padrão, mas pode ser trodaca por XML por exemplo
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class StudentController : ControllerBase
     {
         private IStudenService studenService;

@@ -66,6 +66,18 @@ Execute o SELECT: No prompt do psql, execute:
 SELECT * FROM nome_da_tabela;
 ```
 
+---
+
+Usuário registrado
+
+```json
+{
+    "email": "denisio@ymail.com",
+  "password": "Numsey@20241@#",
+  "confirmPassword": "Numsey@20241@#"
+}
+```
+
 
 ### Referências
 Scalar - https://github.com/scalar/scalar/blob/main/packages/scalar.aspnetcore/README.md

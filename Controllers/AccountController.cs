@@ -36,12 +36,15 @@ namespace MyApp.Namespace
             {
                 return Ok($"Usuário {model.Email} registrado com sucesso");
             }
-
-            return BadRequest("Erro ao registrar usuário");
+            var errorResult = new {
+                Message = "Erro ao registrar usuário",
+                Erros = ModelState.Values.SelectMany(e => e.Errors).Select(e => e.ErrorMessage)
+            };
+            return BadRequest(errorResult);
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginModel model)
+        public async Task<ActionResult<UserToken>> Login([FromBody] LoginModel model)
         {
             if (model == null)
             {
@@ -52,7 +55,7 @@ namespace MyApp.Namespace
 
             if (result)
             {
-                return Ok(GenerateJwtToken(model));
+                return GenerateJwtToken(model);
             }
 
             ModelState.AddModelError("Password", "Usuário ou senha inválidos");
@@ -61,6 +64,11 @@ namespace MyApp.Namespace
 
         private ActionResult<UserToken> GenerateJwtToken(LoginModel model)
         {
+            if (model == null || string.IsNullOrEmpty(model.Email))
+            {
+                return BadRequest("Invalid login model");
+            }
+
             var claims = new[]
             {
                 new Claim("email", model.Email),
@@ -80,11 +88,11 @@ namespace MyApp.Namespace
                 signingCredentials: creds
             );
 
-            return Ok(new UserToken()
+            return new UserToken()
             {
                 Token = new JwtSecurityTokenHandler().WriteToken(token),
                 Expiration = token.ValidTo
-            });
+            };
         }
     }
 }
