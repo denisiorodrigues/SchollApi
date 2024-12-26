@@ -17,4 +17,9 @@ public class RegisterModel
     [DataType(DataType.Password)]
     [Compare("Password", ErrorMessage = "As senhas não conferem")]
     public string ConfirmPassword { get; set; }
+
+    public bool PasswordsNotMatch()
+    {
+        return Password != ConfirmPassword;
+    }
 }
