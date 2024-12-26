@@ -44,12 +44,12 @@ Acesse o PostgreSQL informando o _host_ e a _porta_:
 *-d* - Database
 ```bash
 psql -h localhost -p 5432 -U user -d mydatabase
-````
+```
 
 Acesse o PostgreSQL no mesmo _host_:
 ```bash
 psql -U postgres -d schoolapi
-````
+```
 
 Liste todas as tabelas: No prompt do psql, execute:
 ```bash

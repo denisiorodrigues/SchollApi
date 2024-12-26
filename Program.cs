@@ -31,6 +31,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 
 //Register services
 builder.Services.AddScoped<IStudenService, StudentService>();
+builder.Services.AddScoped<IAuthenticate, AuthenticateService>();
 
 var app = builder.Build();
 
